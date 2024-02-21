@@ -1,0 +1,1251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1280</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>等线</family>
+    <pointsize>16</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>短视频推荐系统</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*SCROLLVERTICAL*/
+QScrollBar:vertical {
+    border: 6px solid rgb(0, 0, 0, 0);
+    margin: 14px 0px 14px 0px;
+    width: 16px;
+}
+
+QScrollBar:vertical:hover {
+    border: 5px solid rgb(0, 0, 0, 0);
+}
+
+QScrollBar::handle:vertical {
+    background-color: rgb(0, 0, 0, 110);
+    border-radius: 2px;
+    min-height: 25px;
+}
+
+QScrollBar::sub-line:vertical {
+    image: url(:/icon/ScrollTop.png);
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical:hover {
+    image: url(:/icon/ScrollTopHover.png);
+}
+
+QScrollBar::sub-line:vertical:pressed {
+    image: url(:/icon/ScrollTopPressed.png);
+}
+
+QScrollBar::add-line:vertical {
+    image: url(:/icon/ScrollBottom.png);
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:vertical:hover {
+    image: url(:/icon/ScrollBottomHover.png);
+}
+
+QScrollBar::add-line:vertical:pressed {
+    image: url(:/icon/ScrollBottomPressed.png);
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/*SCROLLHORIZONTAL*/
+QScrollBar:horizontal {
+    border: 6px solid rgb(0, 0, 0, 0);
+    margin: 0px 14px 0px 14px;
+    height: 16px;
+}
+
+QScrollBar:horizontal:hover {
+    border: 5px solid rgb(0, 0, 0, 0);
+}
+
+QScrollBar::handle:horizontal {
+    background-color: rgb(0, 0, 0, 110);
+    border-radius: 2px;
+    min-width: 25px;
+}
+
+QScrollBar::sub-line:horizontal {
+    image: url(:/icon/ScrollLeft.png);
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal:hover {
+    image: url(:/icon/ScrollLeftHover.png);
+}
+
+QScrollBar::sub-line:horizontal:pressed {
+    image: url(:/icon/ScrollLeftPressed.png);
+}
+
+QScrollBar::add-line:horizontal {
+    image: url(:/icon/ScrollRight.png);
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::add-line:horizontal:hover {
+    image: url(:/icon/ScrollRightHover.png);
+}
+
+QScrollBar::add-line:horizontal:pressed {
+    image: url(:/icon/ScrollRightPressed.png);
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+/*LISTWIDGET*/
+QListView {
+    background-color: transparent;
+    border: 1.5px solid rgb(0, 0, 0, 13);
+    border-radius: 5px;
+    outline: 0;
+    padding-right: 5px;
+}
+
+QListView::item {
+    padding: 7px;
+    margin-top: 3px;
+}
+
+QListView::item:selected {
+    color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0, 7);
+    border-radius: 5px;
+    margin-bottom: 3px;
+    padding-left: 0px;
+}
+
+QListView::item:!selected:hover {
+    background-color: rgb(0, 0, 0, 13);
+    border-radius: 5px;
+    margin-bottom: 3px;
+    padding-left: 0px;
+}
+
+/*COMBOBOX*/
+QComboBox {
+    background-color: rgb(0, 0, 0, 7);
+    border: 1px solid rgb(0, 0, 0, 13);
+    border-radius: 5px;
+    padding-left: 10px;
+    min-height: 38px;
+    max-height: 38px;
+}
+
+QComboBox:hover {
+    background-color: rgb(0, 0, 0, 13);
+    border: 1px solid rgb(0, 0, 0, 13);
+}
+
+QComboBox::pressed {
+    border: 1px solid rgb(0, 0, 0, 10);
+}
+
+QComboBox::down-arrow {
+    image: url(:/icon/ComboBox.png);
+}
+
+QComboBox::drop-down {
+    background-color: transparent;
+    min-width: 50px;
+}
+
+QComboBox:disabled {
+    color: rgb(0, 0, 0, 110);
+    background-color: rgb(0, 0, 0, 13);
+    border: 1px solid rgb(0, 0, 0, 5);
+}
+
+QComboBox::down-arrow:disabled {
+    image: url(:/icon/ComboBoxDisabled.png);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>1280</width>
+     <height>720</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QWidget" name="sidebar" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>60</width>
+      <height>720</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>200</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 216);</string>
+    </property>
+    <widget class="QPushButton" name="foldBtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color: transparent;
+border-radius:31px;
+border-image: url(:/icon/unfold.png)
+}
+
+QPushButton:pressed
+{
+border-image: url(:/icon/unfold_selected.png)
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="analyzeBtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>220</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color: transparent;
+border-radius:31px;
+border-image: url(:/icon/analyze.png)
+}
+
+QPushButton:pressed
+{
+border-image: url(:/icon/analyze_selected.png)
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="videoBtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color: transparent;
+border-radius:31px;
+border-image: url(:/icon/video.png)
+}
+
+QPushButton:pressed
+{
+border-image: url(:/icon/video_selected.png)
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="homeBtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color: transparent;
+border-radius:31px;
+border-image: url(:/icon/home.png)
+}
+
+QPushButton:pressed
+{
+border-image: url(:/icon/home_selected.png)
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="userBtn">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color: transparent;
+border-radius:31px;
+border-image: url(:/icon/user.png)
+}
+
+QPushButton:pressed
+{
+border-image: url(:/icon/user_selected.png)
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="analyzeLabel">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>220</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>阿里巴巴普惠体 2.0 55 Regular</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string>聚类分析</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="videoLabel">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>120</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>阿里巴巴普惠体 2.0 55 Regular</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string>视频总览</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="userLabel">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>170</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>阿里巴巴普惠体 2.0 55 Regular</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string>用户总览</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="homeLabel">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>70</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>阿里巴巴普惠体 2.0 55 Regular</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
+     </property>
+     <property name="text">
+      <string>首页</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>59</x>
+      <y>0</y>
+      <width>1221</width>
+      <height>720</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="page_3">
+     <widget class="QWidget" name="home" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1220</width>
+        <height>720</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1221</width>
+         <height>721</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="0">
+        <property name="leftMargin">
+         <number>40</number>
+        </property>
+        <property name="topMargin">
+         <number>115</number>
+        </property>
+        <property name="rightMargin">
+         <number>40</number>
+        </property>
+        <property name="bottomMargin">
+         <number>115</number>
+        </property>
+        <property name="horizontalSpacing">
+         <number>20</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>42</number>
+        </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>1130</x>
+         <y>630</y>
+         <width>71</width>
+         <height>74</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QPushButton" name="refreshBtn">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: rgb(0, 0, 0, 7);
+    border: 1px solid rgb(0, 0, 0, 13);
+    border-radius: 7px;
+    min-height: 70px;
+    max-height: 70px;
+	border-image: url(:/icon/refresh.png)
+}
+
+QPushButton:hover {
+    background-color: rgb(0, 0, 0, 10);
+    border: 1px solid rgb(0, 0, 0, 13);
+}
+
+QPushButton::pressed {
+    color: rgb(0, 0, 0, 150);
+}
+
+QPushButton::disabled {
+    color: rgb(0, 0, 0, 110);
+    background-color: rgb(0, 0, 0, 13);
+    border: 1px solid rgb(0, 0, 0, 5);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QLabel" name="home_label">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>10</y>
+         <width>700</width>
+         <height>95</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>阿里巴巴普惠体 2.0 65 Medium</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="user_comboBox">
+       <property name="geometry">
+        <rect>
+         <x>980</x>
+         <y>40</y>
+         <width>150</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>阿里巴巴普惠体 2.0 55 Regular</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_4">
+     <widget class="QWidget" name="video" native="true">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>0</y>
+        <width>1221</width>
+        <height>720</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>1221</width>
+         <height>601</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_video_main" rowstretch="0" columnstretch="0">
+        <property name="leftMargin">
+         <number>40</number>
+        </property>
+        <property name="topMargin">
+         <number>35</number>
+        </property>
+        <property name="rightMargin">
+         <number>40</number>
+        </property>
+        <property name="bottomMargin">
+         <number>80</number>
+        </property>
+        <property name="horizontalSpacing">
+         <number>20</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>42</number>
+        </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="gridLayoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1221</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_video_button">
+        <property name="leftMargin">
+         <number>40</number>
+        </property>
+        <property name="topMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>40</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="horizontalSpacing">
+         <number>15</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>20</number>
+        </property>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="verticalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>1140</x>
+         <y>660</y>
+         <width>41</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QPushButton" name="refreshBtn_video">
+          <property name="minimumSize">
+           <size>
+            <width>36</width>
+            <height>38</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>36</width>
+            <height>38</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: rgb(0, 0, 0, 7);
+    border: 1px solid rgb(0, 0, 0, 13);
+    border-radius: 7px;
+    min-height: 36px;
+    max-height: 36px;
+	border-image: url(:/icon/refresh.png)
+}
+
+QPushButton:hover {
+    background-color: rgb(0, 0, 0, 10);
+    border: 1px solid rgb(0, 0, 0, 13);
+}
+
+QPushButton::pressed {
+    color: rgb(0, 0, 0, 150);
+}
+
+QPushButton::disabled {
+    color: rgb(0, 0, 0, 110);
+    background-color: rgb(0, 0, 0, 13);
+    border: 1px solid rgb(0, 0, 0, 5);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="predict_btn">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>661</y>
+         <width>300</width>
+         <height>38</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>36</width>
+         <height>38</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>300</width>
+         <height>38</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>阿里巴巴普惠体 2.0 55 Regular</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: rgb(0, 0, 0, 7);
+    border: 1px solid rgb(0, 0, 0, 13);
+    border-radius: 7px;
+    min-height: 36px;
+    max-height: 36px;
+}
+
+QPushButton:hover {
+    background-color: rgb(0, 0, 0, 10);
+    border: 1px solid rgb(0, 0, 0, 13);
+}
+
+QPushButton::pressed {
+    color: rgb(0, 0, 0, 150);
+}
+
+QPushButton::disabled {
+    color: rgb(0, 0, 0, 110);
+    background-color: rgb(0, 0, 0, 13);
+    border: 1px solid rgb(0, 0, 0, 5);
+}</string>
+       </property>
+       <property name="text">
+        <string>热度变化预测</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QListView" name="listView_user">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>70</y>
+        <width>190</width>
+        <height>600</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListView" name="listView_video">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>70</y>
+        <width>600</width>
+        <height>600</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListView" name="listView_similar">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>70</y>
+        <width>190</width>
+        <height>600</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="user_label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 65 Medium</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>用户列表</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="similar_label">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>20</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 65 Medium</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>相似用户</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="video_label">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>20</y>
+        <width>601</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 65 Medium</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>用户观看视频列表</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="user_count_label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>670</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 55 Regular</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>用户总数：10000</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="video_count_label">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>670</y>
+        <width>601</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 55 Regular</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="similar_count_label">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>670</y>
+        <width>191</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 55 Regular</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QListView" name="listView_cluster_detail">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>95</y>
+        <width>700</width>
+        <height>550</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListView" name="listView_cluster">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>95</y>
+        <width>190</width>
+        <height>550</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="video_cluster_btn">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>20</y>
+        <width>201</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>36</width>
+        <height>38</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>52</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 55 Regular</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(0, 0, 0, 7);
+    border: 1px solid rgb(0, 0, 0, 13);
+    border-radius: 7px;
+    min-height: 36px;
+    max-height: 50px;
+}
+
+QPushButton:hover {
+    background-color: rgb(0, 0, 0, 10);
+    border: 1px solid rgb(0, 0, 0, 13);
+}
+
+QPushButton::pressed {
+    color: rgb(0, 0, 0, 150);
+}
+
+QPushButton::disabled {
+    color: rgb(0, 0, 0, 110);
+    background-color: rgb(0, 0, 0, 13);
+    border: 1px solid rgb(0, 0, 0, 5);
+}</string>
+      </property>
+      <property name="text">
+       <string>视频聚类分析</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="user_cluster_btn">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>20</y>
+        <width>201</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>36</width>
+        <height>38</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>52</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>阿里巴巴普惠体 2.0 55 Regular</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: rgb(0, 0, 0, 7);
+    border: 1px solid rgb(0, 0, 0, 13);
+    border-radius: 7px;
+    min-height: 36px;
+    max-height: 50px;
+}
+
+QPushButton:hover {
+    background-color: rgb(0, 0, 0, 10);
+    border: 1px solid rgb(0, 0, 0, 13);
+}
+
+QPushButton::pressed {
+    color: rgb(0, 0, 0, 150);
+}
+
+QPushButton::disabled {
+    color: rgb(0, 0, 0, 110);
+    background-color: rgb(0, 0, 0, 13);
+    border: 1px solid rgb(0, 0, 0, 5);
+}</string>
+      </property>
+      <property name="text">
+       <string>用户聚类分析</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <zorder>stackedWidget</zorder>
+   <zorder>sidebar</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>foldBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>onExpandClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>27</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>209</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>home_init()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1358</x>
+     <y>661</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1207</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>home_show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>108</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>videoBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>video_show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>38</x>
+     <y>193</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>107</x>
+     <y>194</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>userBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>user_show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>110</x>
+     <y>210</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>analyzeBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>analyze_show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>36</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>101</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>predict_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>predict_video()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1092</x>
+     <y>683</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>video_cluster_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>video_cluster()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>599</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>user_cluster_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>user_cluster()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>939</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>refreshBtn_video</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>refresh_video_btn_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1216</x>
+     <y>679</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>onExpandClicked()</slot>
+  <slot>home_init()</slot>
+  <slot>home_show()</slot>
+  <slot>video_show()</slot>
+  <slot>user_show()</slot>
+  <slot>analyze_show()</slot>
+  <slot>predict_video()</slot>
+  <slot>video_cluster()</slot>
+  <slot>user_cluster()</slot>
+  <slot>refresh_video_btn_clicked()</slot>
+ </slots>
+</ui>

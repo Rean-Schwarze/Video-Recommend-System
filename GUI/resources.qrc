@@ -1,0 +1,36 @@
+<RCC>
+  <qresource>
+    <file>icon/ScrollBottom.png</file>
+    <file>icon/ScrollBottomHover.png</file>
+    <file>icon/ScrollBottomPressed.png</file>
+    <file>icon/ScrollLeft.png</file>
+    <file>icon/ScrollLeftHover.png</file>
+    <file>icon/ScrollLeftPressed.png</file>
+    <file>icon/ScrollRight.png</file>
+    <file>icon/ScrollRightHover.png</file>
+    <file>icon/ScrollRightPressed.png</file>
+    <file>icon/ScrollTop.png</file>
+    <file>icon/ScrollTopHover.png</file>
+    <file>icon/ScrollTopPressed.png</file>
+    <file>icon/ComboBox.png</file>
+    <file>icon/ComboBoxDisabled.png</file>
+    <file>icon/analyze.png</file>
+    <file>icon/analyze_selected.png</file>
+    <file>icon/danmaku.png</file>
+    <file>icon/up.png</file>
+    <file>icon/view.png</file>
+    <file>icon/refresh.png</file>
+    <file>icon/home.png</file>
+    <file>icon/home_selected.png</file>
+    <file>icon/search.png</file>
+    <file>icon/search_selected.png</file>
+    <file>icon/user.png</file>
+    <file>icon/user_selected.png</file>
+    <file>icon/video.png</file>
+    <file>icon/video_selected.png</file>
+    <file>icon/fold.png</file>
+    <file>icon/fold_selected.png</file>
+    <file>icon/unfold.png</file>
+    <file>icon/unfold_selected.png</file>
+  </qresource>
+</RCC>
